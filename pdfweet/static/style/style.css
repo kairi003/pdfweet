@@ -1,0 +1,12 @@
+
+
+li.view-item {
+  list-style: none;
+  display: inline-block;
+}
+
+img.pdf-image {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+}

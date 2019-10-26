@@ -66,12 +66,7 @@ def tweet():
             image = [request.files.get(f'image[{i}]', None) for i in range(num)]
             statuses = list(th.send_tweet(text, image))
         except Exception as ee:
-            raise ee
             return str(ee)
-    return redirect(url_for('root'))
+    return render_template('tweet_tpl.html', tweet_id=statuses[0].id)
 
 
-@app.route('/test2/')
-def test2():
-    th.test()
-    return redirect(url_for('root'))

@@ -39,13 +39,9 @@ def send_tweet(text, image):
     status = NoneStatus
     for i in range(n):
         media_ids = list(generate_media_ids(image[4*i:4*(i+1)]))
-        status = api.update_status(
-            text.format(i=i+1, n=n), media_ids=media_ids, in_reply_to_status_id=status.id)
+        print(text.format(i=i+1, n=n))
+        status = api.update_status(text.format(i=i+1, n=n), media_ids=media_ids, in_reply_to_status_id=status.id)
         yield status
-
-def test():
-    api = get_api()
-    api.update_status('test')
 
 
 def generate_media_ids(images):
@@ -59,3 +55,5 @@ def generate_media_ids(images):
             yield media.media_id
         except Exception:
             continue
+
+

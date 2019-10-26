@@ -7,7 +7,7 @@
 </head>
 
 <body>
-  <h1>pdfweet</h1>
+  <img class="logo" src="static/pdfweet_logo.svg" alt="pdfweet_logo" width="515.745" height="128"/>
   <div class="user">
     {% block user %}
     {% endblock %}
@@ -30,9 +30,11 @@
       <button id="postTweet">tweet</button>
     </div>
 
-    <ul id="pdfView" class="pdf-view">
-    </ul>
+    <div id="tweetView" class="tweet-view"></div>
 
+    <ul id="pdfView" class="pdf-view"></ul>
+
+    <script src="/static/scripts/twi_render.js"></script>
     <script src="/static/scripts/pdf.js"></script>
     <script src="/static/scripts/pdf_read2.js"></script>
   {% endif %}
