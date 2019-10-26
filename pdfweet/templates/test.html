@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    body {
+      background-color: rgb(228, 228, 228);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="pdf-upload">
+    <label for="pdfPassword">PDF: </label>
+    <input type="file" id="pdfFile" accept="application/pdf" />
+    <label for="pdfPassword">Pass: </label>
+    <input type="password" id="pdfPassword" class="password" />
+  </div>
+  <div id="tweetForm">
+    <textarea id="tweetText" name="tweetText">({i}/{n}) #pdfweet</textarea>
+    <button id="postTweet">tweet</button>
+  </div>
+
+  <ul id="pdfView" class="pdf-view">
+  </ul>
+
+  <script src="/static/scripts/pdf.js"></script>
+  <script src="/static/scripts/pdf_read2.js"></script>
+  <script>
+  </script>
+</body>
+
+</html>
