@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block user_info %}
+<img class="twitter-icon" src="{{ user.profile_image_url_https.replace('_normal', '') }}" />
+<div class="twitter-user">
+  <span class="twitter-name">{{ user.name }}</span><br>
+  <span class="twitter-id">@{{ user.screen_name }}</span>
+</div>
+<span class="logout"><a href="{{ url_for('logout') }}">Logout</a></span>
+{% endblock %}
+
+{% block pdf_form %}
+<div class="pdf-upload">
+  <div>
+    <label for="pdfPassword">PDF: </label>
+    <input type="file" id="pdfFile" accept="application/pdf" />
+  </div>
+  <div>
+    <label for="pdfPassword">Pass: </label>
+    <input type="password" id="pdfPassword" class="password" />
+  </div>
+</div>
+<div id="tweetForm" class="tweet-form">
+  <textarea id="tweetText" class="tweet-text">({i}/{n}) #pdfweet</textarea>
+  <button id="postTweet">tweet</button>
+</div>
+
+<div id="tweetView" class="tweet-view"></div>
+
+<ul id="pdfView" class="pdf-view"></ul>
+
+{% endblock %}

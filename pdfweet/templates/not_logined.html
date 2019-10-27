@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-  {% extends user %}
-    <span><a href="{{ url_for('login') }}">Login to Twitter</a></span>
-  {% endblock %}
+{% block user_info %}
+  <span><a href="{{ url_for('login') }}">Login with Twitter</a></span>
 {% endblock %}

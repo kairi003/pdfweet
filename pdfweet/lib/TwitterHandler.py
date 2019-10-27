@@ -1,14 +1,15 @@
 import io
+import math
 import imghdr
 import tweepy
 from flask import session
 from pdfweet import app
-import math
 
 imghdr.tests.append(lambda h, f: 'jpeg' if h[:2] == b'\xff\xd8' else None)
 
 class NoneStatus:
     id = None
+
 
 def get_auth():
     auth = tweepy.OAuthHandler(
@@ -40,7 +41,8 @@ def send_tweet(text, image):
     for i in range(n):
         media_ids = list(generate_media_ids(image[4*i:4*(i+1)]))
         print(text.format(i=i+1, n=n))
-        status = api.update_status(text.format(i=i+1, n=n), media_ids=media_ids, in_reply_to_status_id=status.id)
+        status = api.update_status(text.format(
+            i=i+1, n=n), media_ids=media_ids, in_reply_to_status_id=status.id)
         yield status
 
 
@@ -55,5 +57,3 @@ def generate_media_ids(images):
             yield media.media_id
         except Exception:
             continue
-
-

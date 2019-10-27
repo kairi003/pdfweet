@@ -34,7 +34,7 @@ const blob2img = blob => {
 const pdf_load = async (url, password) => {
   window.blobs = [];
   const pdfView = document.getElementById('pdfView');
-  document.querySelectorAll('.view-item').forEach(item=>pdfview.removeChild(item));
+  document.querySelectorAll('.view-item').forEach(item=>pdfView.removeChild(item));
   for (let img of document.querySelectorAll('.page-img')) img.parentNode.removeChild(img);
   const loadingTask = pdfjsLib.getDocument({url,　password});
   const pdf = await loadingTask.promise.catch(err => err);

@@ -1,12 +1,63 @@
+@import url("reset.css");
+
+body {
+  background-color: #f4f5f7;
+  font-size: 16px;
+  line-height: 1.5em;
+  color: #212121;
+}
 
 
-li.view-item {
-  list-style: none;
+.twitter-icon {
   display: inline-block;
+  height: 3.5em;
+  width: 3.5em;
+  vertical-align: bottom;
+}
+
+.twitter-user {
+  display: inline-block;
+  height: 3em;
+  line-height: 1.2em;
+  vertical-align: top;
+}
+
+.twitter-name {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+.twitter-id {
+  font-size: 0.9em;
+  color: #505050;
+}
+
+.logout {
+  vertical-align: bottom;
+}
+
+
+
+
+ul.pdf-view {
+  display: table;
+  border-collapse: collapse;
+}
+
+
+li.view-item {  
+  border: solid 1px;
+  list-style: none;
+  display: table-cell;
 }
 
 img.pdf-image {
   width: 200px;
   height: 200px;
   object-fit: contain;
+}
+
+textarea.tweet-text {
+  display: block;
+  width: 30em;
+  height: 5em;
 }

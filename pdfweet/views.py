@@ -1,4 +1,3 @@
-import json
 from flask import session, redirect, render_template, request, url_for
 
 from pdfweet import app
@@ -8,10 +7,10 @@ from pdfweet.lib import TwitterHandler as th
 @app.route('/')
 def root():
     user = th.get_user()
-    try:
-        return render_template('base.html', user=user)
-    except Exception as e:
-        return str(e)
+    if user is None:
+        return render_template('not_logined.html')
+    else:
+        return render_template('logined.html', user=user)
 
 @app.route('/favicon.ico')
 def favicon():

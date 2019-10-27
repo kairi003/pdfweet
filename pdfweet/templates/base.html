@@ -3,41 +3,29 @@
 
 <head>
   <title>pdfweet</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
+  <link rel="stylesheet" href="static/style/style.css">
 </head>
 
 <body>
-  <img class="logo" src="static/pdfweet_logo.svg" alt="pdfweet_logo" width="515.745" height="128"/>
-  <div class="user">
-    {% block user %}
-    {% endblock %}
-  </div>
-  {% if user is none %}
-    <span><a href="{{ url_for('login') }}">Login to Twitter</a></span>
-  {% else %}
-    <img src="{{user.profile_image_url_https}}"/>
-    <span>@{{ user.screen_name }}</span>
-    <span><a href="{{ url_for('logout') }}">Logout</a></span>
+  <header>
+    <img class="logo" src="static/pdfweet_logo.svg" alt="pdfweet" width="515.745" height="128" />
+    <div class="user-info">
+      {% block user_info %}
+      {% endblock %}
+    </div>
+  </header>
+  <article>
+    <div class="pdf-form">
+      {% block pdf_form%}
+      {% endblock %}
+    </div>
+  </article>
+  <footer>
     
-    <div class="pdf-upload">
-      <label for="pdfPassword">PDF: </label>
-      <input type="file" id="pdfFile" accept="application/pdf" />
-      <label for="pdfPassword">Pass: </label>
-      <input type="password" id="pdfPassword" class="password" />
-    </div>
-    <div id="tweetForm">
-      <textarea id="tweetText" name="tweetText">({i}/{n}) #pdfweet</textarea>
-      <button id="postTweet">tweet</button>
-    </div>
-
-    <div id="tweetView" class="tweet-view"></div>
-
-    <ul id="pdfView" class="pdf-view"></ul>
-
-    <script src="/static/scripts/twi_render.js"></script>
-    <script src="/static/scripts/pdf.js"></script>
-    <script src="/static/scripts/pdf_read.js"></script>
-  {% endif %}
+  </footer>
+  <script src="/static/scripts/twi_render.js"></script>
+  <script src="/static/scripts/pdf.js"></script>
+  <script src="/static/scripts/pdf_read.js"></script>
 </body>
 
 </html>
