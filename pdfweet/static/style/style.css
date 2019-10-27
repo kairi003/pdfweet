@@ -1,33 +1,58 @@
-@import url("reset.css");
-
 body {
-  background-color: #f4f5f7;
+  background-color: rgb(230, 231, 235);
   font-size: 16px;
-  line-height: 1.5em;
   color: #212121;
+}
+
+.container {
+  background-color: #f4f5f7;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+header.container {
+  margin-top: 0rem;
+}
+
+header.container {
+  margin-top: 0rem;
+}
+
+.container * {
+  margin: 0.2rem;
+}
+
+.logo {
+  height: 5rem;
+}
+
+.btn-tweet {
+  color: #ffffff;
+  background-color: #55acee;
+  border-color: #55acee;
 }
 
 
 .twitter-icon {
   display: inline-block;
-  height: 3.5em;
-  width: 3.5em;
+  height: 3.5rem;
+  width: 3.5rem;
   vertical-align: bottom;
 }
 
 .twitter-user {
   display: inline-block;
-  height: 3em;
-  line-height: 1.2em;
+  height: 3rem;
+  line-height: 1.2rem;
   vertical-align: top;
 }
 
 .twitter-name {
   font-weight: bold;
-  font-size: 1.2em;
+  font-size: 1.2rem;
 }
 .twitter-id {
-  font-size: 0.9em;
+  font-size: 0.9rem;
   color: #505050;
 }
 
@@ -35,29 +60,40 @@ body {
   vertical-align: bottom;
 }
 
-
-
-
-ul.pdf-view {
-  display: table;
-  border-collapse: collapse;
+.pdf-upload {
+  margin-bottom: 2rem;
 }
 
+.tweet-form {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
 
-li.view-item {  
-  border: solid 1px;
-  list-style: none;
-  display: table-cell;
+.tweet-text {
+  resize: none;
+  height: 10rem;
+}
+
+.pdf-view {
+  background: None;
 }
 
 img.pdf-image {
   width: 200px;
   height: 200px;
   object-fit: contain;
+  border: solid 1px;
+  border-color: #9b9b9b;
+  box-sizing: content-box;
 }
 
-textarea.tweet-text {
-  display: block;
-  width: 30em;
-  height: 5em;
+.custom-file {
+  overflow: hidden;
+  margin: 0;
+  border: None;
 }
+.custom-file-label {
+  white-space: nowrap;
+  margin: 0;
+}
+

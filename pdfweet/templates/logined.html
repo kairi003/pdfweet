@@ -5,27 +5,44 @@
   <span class="twitter-name">{{ user.name }}</span><br>
   <span class="twitter-id">@{{ user.screen_name }}</span>
 </div>
-<span class="logout"><a href="{{ url_for('logout') }}">Logout</a></span>
+<a href="/logout"><button class="logout btn btn-secondary btn-sm">logout</button></a>
 {% endblock %}
 
 {% block pdf_form %}
-<div class="pdf-upload">
-  <div>
-    <label for="pdfPassword">PDF: </label>
-    <input type="file" id="pdfFile" accept="application/pdf" />
+<div class="pdf-form">
+
+  <div class="pdf-upload form-inline">
+    <div class="form-group">
+      <label>PDF</label>
+      <div class="custom-file form-control">
+        <input type="file" class="custom-file-input" id="pdfFile" accept="application/pdf">
+        <label id="pdfFileLabel" class="custom-file-label form-control" for="pdfFile">PDF file...</label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Pass</label>
+      <input type="password" id="pdfPassword" class="password form-control">
+    </div>
+    <button type="button" id="pdfSubmit" class="btn btn-primary form-control">PDF Submit</button>
   </div>
-  <div>
-    <label for="pdfPassword">Pass: </label>
-    <input type="password" id="pdfPassword" class="password" />
+  <div id="tweetForm" class="tweet-form">
+    <div class="form-group">
+      <label>Tweet Text</label>
+      <textarea id="tweetText" class="tweet-text form-control" rows="4" cols="80">({i}/{n}) #pdfweet</textarea>
+    </div>
+    <div><span>count:</span><span id="count"></span></div>
+    <button type="button" id="postTweet" class="btn btn-tweet form-control btn-lg">Tweet</button>
   </div>
+
+  <div id="tweetView" class="tweet-view"></div>
+
+  <div id="pdfView" class="pdf-view clearfix"></div>
 </div>
-<div id="tweetForm" class="tweet-form">
-  <textarea id="tweetText" class="tweet-text">({i}/{n}) #pdfweet</textarea>
-  <button id="postTweet">tweet</button>
-</div>
+{% endblock %}
 
-<div id="tweetView" class="tweet-view"></div>
-
-<ul id="pdfView" class="pdf-view"></ul>
-
+{% block script %}
+<script src="/static/scripts/twi_render.js"></script>
+<script src="/static/scripts/pdf.min.js"></script>
+<script src="/static/scripts/twitter-text-3.0.1.min.js"></script>
+<script src="/static/scripts/script.js"></script>
 {% endblock %}
