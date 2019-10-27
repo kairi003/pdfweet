@@ -6,20 +6,9 @@ body {
 
 .container {
   background-color: #f4f5f7;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
-
-header.container {
-  margin-top: 0rem;
-}
-
-header.container {
-  margin-top: 0rem;
-}
-
-.container * {
-  margin: 0.2rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding: 1rem;
 }
 
 .logo {
@@ -64,9 +53,17 @@ header.container {
   margin-bottom: 2rem;
 }
 
+.pdf-upload>* {
+  margin: 0.5rem;
+}
+
 .tweet-form {
   margin-top: 2rem;
   margin-bottom: 2rem;
+}
+
+.tweet-form>* {
+  margin: 0.5rem;
 }
 
 .tweet-text {
@@ -85,6 +82,7 @@ img.pdf-image {
   border: solid 1px;
   border-color: #9b9b9b;
   box-sizing: content-box;
+  margin:0.1rem;
 }
 
 .custom-file {
