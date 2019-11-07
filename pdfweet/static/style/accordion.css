@@ -10,14 +10,15 @@
 
 .acd-label {
   display: block;
-  margin-bottom: 1px;
-  padding: 10px;
-  margin-top: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 .acd-content {
   display: none;
   padding: 0 10px;
+  font-size: 1rem;
+  font-weight: normal;
 }
 
 .acd-check:checked+.acd-block{
@@ -33,9 +34,9 @@
   box-sizing: border-box;
   width: .8rem;
   height: .8rem;
-  border-bottom: .1rem solid #212121;
-  border-right: .1rem solid #212121;
-  transform: translate(.5rem, -.1rem) rotate(45deg);
+  border-bottom: .3rem solid #212121;
+  border-right: .3rem solid #212121;
+  transform: translate(.5rem, -.2rem) rotate(45deg);
   transition: .2s;
 }
 
