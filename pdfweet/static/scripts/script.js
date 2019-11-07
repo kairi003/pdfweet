@@ -4,7 +4,7 @@ window.blobs = [];
 
 const pdf2canvas = async (pdf, i) => {
   const page = await pdf.getPage(i);
-  const scale = 1;
+  const scale = 2;
   const viewport = page.getViewport({
     scale
   });

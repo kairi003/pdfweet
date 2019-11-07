@@ -11,16 +11,20 @@
 {% block pdf_form %}
 <div class="pdf-form">
 
-  <div class="pdf-upload form-inline">
-    <div class="custom-file form-control">
-      <input type="file" class="custom-file-input" id="pdfFile" accept="application/pdf">
-      <label id="pdfFileLabel" class="custom-file-label form-control" for="pdfFile">PDF file...</label>
+  <div class="pdf-upload">
+    <p>1. Choose PDF file and push 'PDF Submit'.</p>
+    <div class="form-inline">
+      <div class="custom-file form-control">
+        <input type="file" class="custom-file-input" id="pdfFile" accept="application/pdf">
+        <label id="pdfFileLabel" class="custom-file-label form-control" for="pdfFile">PDF file...</label>
+      </div>
+      <input type="password" id="pdfPassword" class="password form-control" placeholder="password">
+      <button type="button" id="pdfSubmit" class="btn btn-primary form-control">PDF Submit</button>
     </div>
-    <input type="password" id="pdfPassword" class="password form-control" placeholder="password">
-    <button type="button" id="pdfSubmit" class="btn btn-primary form-control">PDF Submit</button>
   </div>
   <div id="tweetForm" class="tweet-form">
-    <textarea id="tweetText" class="tweet-text form-control" rows="4" cols="80">({i}/{n}) #pdfweet</textarea>
+    <p>2. Input tweet text and push 'Tweet'.</p>
+    <textarea id="tweetText" class="tweet-text form-control" rows="4" cols="80">({i}/{n}) #pdfweet https://pdfweet.herokuapp.com/</textarea>
     <div><span>count:</span><span id="count"></span></div>
     <button type="button" id="postTweet" class="btn btn-tweet form-control btn-lg">Tweet</button>
   </div>

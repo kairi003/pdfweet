@@ -10,6 +10,7 @@
   <title>pdfweet</title>
 
   <link rel="stylesheet" href="static/style/style.css">
+  <link rel="stylesheet" href="static/style/accordion.css">
 </head>
 
 <body>
@@ -22,6 +23,31 @@
       {% block user_info %}
       {% endblock %}
     </div>
+
+    <input id="acd-check1" class="acd-check" type="checkbox">
+    <div class="acd-block">
+      <label for="acd-check1">Usage<span class="expand"></span></span>
+      <div class="acd-content">
+        <ol>
+          <li>
+            <p>Twitterでログイン</p>
+          </li>
+          <li>
+            <p>PDFを選択(必要ならパスワードを入力)</p>
+          </li>
+          <li>
+            <p>PDF SubmitでPDFを決定</p>
+          </li>
+          <li>
+            <p>テキストエリアにツイート内容を入力({p}は現在のツイート番号、{n}は総ツイート数が代入される)</p>
+          </li>
+          <li>
+            <p>Tweetボタンでツイート</p>
+          </li>
+        </ol>
+      </div>
+    </div>
+
   </header>
   <article class="container">
     <div class="pdf-form">

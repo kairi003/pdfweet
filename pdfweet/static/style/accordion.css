@@ -1,0 +1,44 @@
+.acd-check {
+  display: none;
+}
+
+.acd-block {
+  display: block;
+  margin-bottom: 1px;
+  margin-top: 1rem;
+}
+
+.acd-label {
+  display: block;
+  margin-bottom: 1px;
+  padding: 10px;
+  margin-top: 1rem;
+}
+
+.acd-content {
+  display: none;
+  padding: 0 10px;
+}
+
+.acd-check:checked+.acd-block{
+  height: auto;
+}
+
+.acd-check:checked+.acd-block .acd-content {
+  display: block;
+}
+
+.expand {
+  display: inline-block;
+  box-sizing: border-box;
+  width: .8rem;
+  height: .8rem;
+  border-bottom: .1rem solid #212121;
+  border-right: .1rem solid #212121;
+  transform: translate(.5rem, -.1rem) rotate(45deg);
+  transition: .2s;
+}
+
+.acd-check:checked+.acd-block .expand {
+  transform: translate(.5rem, .2rem) rotate(-135deg);
+}
