@@ -63,7 +63,8 @@ def tweet():
             text = request.form.get('text', '(i/n)')
             num = int(request.form.get('num', 0))
             image = [request.files.get(f'image[{i}]', None) for i in range(num)]
-            statuses = list(th.send_tweet(text, image))
+            sensitive = 'sensitive' in request.form
+            statuses = list(th.send_tweet(text, image, sensitive))
         except Exception as ee:
             return str(ee)
     return render_template('tweet_tpl.html', tweet_id=statuses[0].id)

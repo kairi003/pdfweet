@@ -7,6 +7,7 @@ from pdfweet import app
 
 imghdr.tests.append(lambda h, f: 'jpeg' if h[:2] == b'\xff\xd8' else None)
 
+
 class NoneStatus:
     id = None
 
@@ -34,7 +35,7 @@ def get_user():
         return None
 
 
-def send_tweet(text, image):
+def send_tweet(text, image, sensitive):
     api = get_api()
     n = math.ceil(len(image) / 4)
     status = NoneStatus
@@ -42,7 +43,7 @@ def send_tweet(text, image):
         media_ids = list(generate_media_ids(image[4*i:4*(i+1)]))
         print(text.format(i=i+1, n=n))
         status = api.update_status(text.format(
-            i=i+1, n=n), media_ids=media_ids, in_reply_to_status_id=status.id)
+            i=i+1, n=n), media_ids=media_ids, in_reply_to_status_id=status.id, possibly_sensitive=sensitive)
         yield status
 
 

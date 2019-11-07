@@ -81,10 +81,9 @@ document.getElementById('postTweet').addEventListener('click', () => {
     alert('ツイートが最大文字数を超えています');
     return false;
   }
-  const formData = new FormData();
+  const formData = new FormData(document.getElementById('tweetForm'));
   for (let i in window.blobs) formData.append(`image[${i}]`, window.blobs[i]);
   formData.append('num', window.blobs.length.toString());
-  formData.append('text', document.getElementById('tweetText').value);
   fetch('/tweet', {
     method: 'POST',
     body: formData
