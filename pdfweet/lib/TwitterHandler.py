@@ -41,7 +41,6 @@ def send_tweet(text, image, sensitive):
     status = NoneStatus
     for i in range(n):
         media_ids = list(generate_media_ids(image[4*i:4*(i+1)]))
-        print(text.format(i=i+1, n=n))
         status = api.update_status(text.format(
             i=i+1, n=n), media_ids=media_ids, in_reply_to_status_id=status.id, possibly_sensitive=sensitive)
         yield status
