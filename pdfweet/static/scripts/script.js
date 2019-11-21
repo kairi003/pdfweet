@@ -38,9 +38,15 @@ const blob2img = blob => {
 
 const pdf_load = async (url, password) => {
   window.blobs = [];
+  const postTweet = document.getElementById('postTweet');
+  postTweet.disabled = true;
+  const dlBtn = document.getElementById('dlBtn');
+  dlBtn.disabled = true;
+  const msgblock = document.getElementById('msgblock');
+  msgblock.textContent = "PDF Loading...";
   const pdfView = document.getElementById('pdfView');
   document.querySelectorAll('.view-item').forEach(item => pdfView.removeChild(item));
-  for (let img of document.querySelectorAll('.page-img')) img.parentNode.removeChild(img);
+  for (let img of document.querySelectorAll('.pdf-image')) img.parentNode.removeChild(img);
   const loadingTask = pdfjsLib.getDocument({
     url,
     password
@@ -63,6 +69,9 @@ const pdf_load = async (url, password) => {
     img.className = 'pdf-image';
     pdfView.append(img);
   }
+  postTweet.disabled = false;
+  dlBtn.disabled = false;
+  msgblock.textContent = "";
 };
 
 const pdf_input = async () => {
@@ -72,26 +81,50 @@ const pdf_input = async () => {
   pdf_load(pdf_url, pdf_password);
 }
 
+const sleep = m => new Promise(r => setTimeout(r, m))
+
 document.getElementById('pdfSubmit').addEventListener('click', pdf_input);
-document.getElementById('postTweet').addEventListener('click', () => {
+document.getElementById('postTweet').addEventListener('click', async () => {
+  const postTweet = document.getElementById('postTweet');
+  const pdfSubmit = document.getElementById('pdfSubmit');
+  const pdfFile = document.getElementById('pdfFile');
+  [postTweet, pdfSubmit, pdfFile].forEach(e => e.disabled = true);
+  const msgblock = document.getElementById('msgblock');
+  msgblock.textContent = "Tweet Sending...";
   if (window.blobs.length == 0) {
     alert('PDFファイルがありません');
-    return false;
   } else if (count.style.color == 'red') {
     alert('ツイートが最大文字数を超えています');
-    return false;
+  } else {
+    const formData = new FormData(document.getElementById('tweetForm'));
+    formData.set('n', parseInt(window.blobs.length.toString() / 4) + 1);
+    let preId = '-1';
+    for (let i = 0; i < window.blobs.length / 4; i++) {
+      for (let j = 0; j < 4; j++) formData.set(`image[${j}]`, window.blobs[4 * i + j] || '');
+      formData.set('preId', preId);
+      formData.set('i', i + 1);
+      response = await fetch('/tweet2', {
+        method: 'POST',
+        body: formData
+      }).then(r => r.json());
+      if (response.success) {
+        preId = response.id;
+      } else {
+        console.log(response.error);
+        alert(`ERROR: ${response.error}`);
+        break;
+      }
+      if (i === 0) {
+        document.getElementById('tweetView').insertAdjacentHTML('afterbegin', `<blockquote class="twitter-tweet"><a href="https://twitter.com/imascg_stage/status/${preId}"></a></blockquote>`);
+        window.twirender();
+      }
+      sleep(1000);
+    }
+    alert('ツイート完了');
   }
-  const formData = new FormData(document.getElementById('tweetForm'));
-  for (let i in window.blobs) formData.append(`image[${i}]`, window.blobs[i]);
-  formData.append('num', window.blobs.length.toString());
-  fetch('/tweet', {
-    method: 'POST',
-    body: formData
-  }).then(r => r.text()).then(html => {
-    document.getElementById('tweetView').innerHTML = html;
-    window.twirender();
-  });
-  alert('ツイートを送信しました');
+  [postTweet, pdfSubmit, pdfFile].forEach(e => e.disabled = false);
+  msgblock.textContent = "";
+  return false;
 })
 
 
