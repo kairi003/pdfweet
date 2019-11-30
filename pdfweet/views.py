@@ -24,6 +24,7 @@ def test():
 
 @app.route('/login', methods=['GET'])
 def login():
+    session.permanent = True
     auth = th.get_auth()
     try:
         redirect_url = auth.get_authorization_url()
