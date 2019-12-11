@@ -36,6 +36,12 @@ const blob2img = blob => {
   return img;
 };
 
+const pdf2img = async (pdf, i, img) => {
+  const blob = await pdf2blob(pdf, i)
+  img.src = URL.createObjectURL(blob);
+  return blob;
+};
+
 const pdf_load = async (url, password) => {
   window.blobs = [];
   const postTweet = document.getElementById('postTweet');
@@ -62,13 +68,14 @@ const pdf_load = async (url, password) => {
       throw err;
     }
   }
-  const range = [...Array(pdf.numPages).keys()];
-  window.blobs = await Promise.all(range.map(async i => pdf2blob(pdf, i + 1)));
-  for (let blob of window.blobs) {
-    let img = blob2img(blob);
-    img.className = 'pdf-image';
+  const imgs = [...Array(pdf.numPages).keys()].map(i=>{
+    let img = new Image();
+    img.className = 'page-img';
+    img.alt = i;
     pdfView.append(img);
-  }
+    return img;
+  });
+  window.blobs = await Promise.all(imgs.map(async (img, i) => pdf2img(pdf, i + 1, img)));
   if (document.querySelectorAll('img.twitter-icon').length) postTweet.disabled = false;
   dlBtn.disabled = false;
   msgblock.textContent = "";
