@@ -1,0 +1,6 @@
+post.html
+activate.bat
+venv/
+.vscode/
+.git/
+__pycache__
