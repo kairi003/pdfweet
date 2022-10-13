@@ -5,17 +5,18 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <link rel="stylesheet" href="static/style/bootstrap.min.css">
-  <link rel="stylesheet" href="static/style/reboot.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style/reboot.min.css') }}">
   <title>pdfweet</title>
 
-  <link rel="stylesheet" href="static/style/style.css">
-  <link rel="stylesheet" href="static/style/accordion.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style/accordion.css') }}">
+  <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
 </head>
 
 <body>
   <header class="container">
-    <img class="logo" src="static/pdfweet_logo.svg" alt="pdfweet">
+    <img class="logo" src="{{ url_for('static', filename='pdfweet_logo.svg') }}" alt="pdfweet">
     <p>
       pdfweet is a tool to tweet PDF files as images.
     </p>
