@@ -31,7 +31,7 @@ def get_user():
     try:
         user = api.me()
         return user
-    except tweepy.TweepError:
+    except tweepy.TweepyException:
         return None
 
 
