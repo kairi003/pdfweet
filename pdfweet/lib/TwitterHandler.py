@@ -32,7 +32,7 @@ def get_api():
 def get_user():
     api = get_api()
     try:
-        user = api.me()
+        user = api.verify_credentials()
         return user
     except tweepy.TweepyException:
         return None
