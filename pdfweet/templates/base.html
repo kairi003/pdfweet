@@ -12,6 +12,9 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='style/accordion.css') }}">
   <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+  {% block script%}
+  {% endblock %}
 </head>
 
 <body>
@@ -62,8 +65,6 @@
   <footer class="container">
     Developed by <a href="https://twitter.com/kairi_005">@kairi_005</a>
   </footer>
-  {% block script%}
-  {% endblock %}
 </body>
 
 </html>

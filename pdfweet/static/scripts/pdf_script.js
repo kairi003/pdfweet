@@ -1,4 +1,4 @@
-pdfjsLib.GlobalWorkerOptions.workerSrc = '/static/scripts/pdf.worker.min.js';
+pdfjsLib.GlobalWorkerOptions.workerSrc = '/static/scripts/thirdparty/pdf.worker.min.js';
 
 window.blobs = [];
 
