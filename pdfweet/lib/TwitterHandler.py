@@ -58,6 +58,20 @@ def send_tweet(text: str, images: list[FileStorage], sensitive: bool) -> Generat
         yield status
 
 
+def send_tweet2(text: str, images: list[FileStorage], sensitive: bool, pre_id: int, i: int, n: int) -> str:
+    api = get_api()
+    if pre_id < 0:
+        pre_id = None
+    media_ids = list(generate_media_ids(api, images))
+    status: Status = api.update_status(
+        text.format(i=i, n=n),
+        media_ids=media_ids,
+        in_reply_to_status_id=pre_id,
+        possibly_sensitive=sensitive
+    )
+    return status.id_str
+
+
 def generate_media_ids(api: tweepy.API, images: list[FileStorage]):
     for img in images:
         try:

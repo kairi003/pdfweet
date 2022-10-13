@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+import json
 from werkzeug.exceptions import BadRequest, Forbidden, InternalServerError
 from flask import session, redirect, render_template, request, url_for
 import tweepy
@@ -78,3 +79,17 @@ def tweet():
         return render_template('tweet_tpl.html', tweet_id=statuses[0].id)
     else:
         raise BadRequest
+
+@app.route('/tweet2', methods=['POST'])
+def tweet2():
+    try:
+        text = request.form.get('text', '(i/n)')
+        n = int(request.form.get('n', 0))
+        i = int(request.form.get('i', 0))
+        images = request.files.values()
+        sensitive = 'sensitive' in request.form
+        pre_id = int(request.form.get('preId', -1))
+        tweet_id = th.send_tweet2(text, images, sensitive, pre_id, i, n)
+        return json.dumps({'success': True, 'id': tweet_id})
+    except Exception as ee:
+        return json.dumps({'success': False, 'error': 'error'})
